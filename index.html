@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signup/Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f1f1f1;
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    
+    button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+    
+    .error-message {
+      color: red;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Signup</h2>
+    <div class="error-message" id="signup-error"></div>
+    <input type="text" id="signup-username" placeholder="Username">
+    <input type="password" id="signup-password" placeholder="Password">
+    <button onclick="signup()">Sign up</button>
+  </div>
+  
+  <div class="container">
+    <h2>Login</h2>
+    <div class="error-message" id="login-error"></div>
+    <input type="text" id="login-username" placeholder="Username">
+    <input type="password" id="login-password" placeholder="Password">
+    <button onclick="login()">Log in</button>
+  </div>
+  
+  <script>
+    function signup() {
+      var username = document.getElementById("signup-username").value;
+      var password = document.getElementById("signup-password").value;
+      
+      // Perform validation, e.g., check for empty fields, strong passwords, etc.
+      // You can add your own validation logic here.
+      
+      // Example: Store the username and password in local storage
+      localStorage.setItem("username", username);
+      localStorage.setItem("password", password);
+      
+      // Show success message or redirect to another page
+      alert("Sign up successful!");
+    }
+    
+    function login() {
+      var username = document.getElementById("login-username").value;
+      var password = document.getElementById("login-password").value;
+      
+      // Example: Retrieve the username and password from local storage
+      var storedUsername = localStorage.getItem("username");
+      var storedPassword = localStorage.getItem("password");
+      
+      if (username === storedUsername && password === storedPassword) {
+        // Show success message or redirect to another page
+        alert("Login successful!");
+      } else {
+        document.getElementById("login-error").textContent = "Invalid username or password.";
+      }
+    }
+  </script>
+</body>
+</html>
